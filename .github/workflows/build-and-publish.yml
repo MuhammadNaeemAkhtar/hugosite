@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: Docker build and publish
+name: Build and publish hugosite
 
 # Controls when the action will run. 
 on:
@@ -44,10 +44,10 @@ jobs:
           
       - name: Build and push Docker image
         id: docker_build
-        uses: docker/build-push-action@${{ github.sha }}
+        uses: docker/build-push-action@v2
         with:
           push: true
-          tags: mnakhtar247/hugo-site:v1
+          tags: mnakhtar247/hugo-site:${{ github.sha }}
           
       - name: Generate deploy yaml
         uses: danielr1996/envsubst-action@1.0.0
