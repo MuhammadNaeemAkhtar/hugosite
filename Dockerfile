@@ -1,8 +1,6 @@
 FROM ubuntu:latest as HUGOINSTALL
 RUN apt-get update
 RUN apt-get install hugo -y
-RUN hv=$(hugo version)
-RUN echo $hv
 
 COPY . /hugo-site
 RUN hugo -v --source=/hugo-site --destination=/hugo-site/public
