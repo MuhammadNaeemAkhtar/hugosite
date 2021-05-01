@@ -55,6 +55,7 @@ jobs:
       env:
         IMG_TAG: ${{ github.sha }}
           
+          
     - name: Deploy website on K8s cluster
       uses: giorio94/kubectl-oidc-action@1.1.0
       with:
