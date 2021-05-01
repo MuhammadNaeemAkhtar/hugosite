@@ -1,0 +1,67 @@
+---
+# Deployment
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hugo-site
+spec:
+  selector:
+    matchLabels:
+      app: hugo-site
+  replicas: 1 # tells deployment to run 1 pods matching the template
+  template:
+    metadata:
+      labels:
+        app: hugo-site
+    spec:
+      containers:
+      - name: hugo-site
+        image: mnakhtar247/hugo-site:v0
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 80
+---
+# Service manifest
+apiVersion: v1
+kind: Service
+metadata:
+  name: hugo-site
+  labels:
+    app: hugo-site
+spec:
+  selector:
+    app: hugo-site
+  ports:
+    - protocol: "TCP"
+      port: 80
+      targetPort: 80
+  type: ClusterIP
+---
+#Ingress manifest
+#Ingress manifest
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: hugo-site
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-production
+spec:
+  tls:
+  - hosts:
+    - s291490-hugosite.crownlabs.polito.it
+    secretName: hugo-site-cert
+  rules:
+    - host: s291490-hugosite.crownlabs.polito.it
+      http:
+        paths:
+          - pathType: Prefix
+            path: "/"
+            backend:
+              service:
+                name: hugo-site
+                port:
+                  number: 80
+
