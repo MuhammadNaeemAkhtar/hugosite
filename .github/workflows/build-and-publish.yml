@@ -1,7 +1,3 @@
-# Workflow to create a Docker image of a Hugo site
-# and deploy it on a K8s cluster
-# Version using github.sha as tag for Docker image
-# and Docker official actions for build/push steps
 name: Build and publish hugosite
 
 # Controls when the action will run. 
@@ -50,10 +46,6 @@ jobs:
         with:
           push: true
           tags: mnakhtar247/hugo-site:${{ github.sha }}
-      
-      # Show Docker image digest using output of previous actions
-      - name: Image digest
-        run: echo ${{ steps.docker_build.outputs.digest }}
           
       - name: Generate deploy yaml
         uses: danielr1996/envsubst-action@1.0.0
