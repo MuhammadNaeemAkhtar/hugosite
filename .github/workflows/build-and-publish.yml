@@ -16,7 +16,6 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      # Runs a single command using the runners shell
       # Use action to checkout repo
       # Hugo themes are git submodules: "submodules: true" needed
       - name: Check out code
