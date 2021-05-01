@@ -50,6 +50,10 @@ jobs:
         with:
           push: true
           tags: mnakhtar247/hugo-site:${{ github.sha }}
+      
+      # Show Docker image digest using output of previous actions
+      - name: Image digest
+        run: echo ${{ steps.docker_build.outputs.digest }}
           
       - name: Generate deploy yaml
         uses: danielr1996/envsubst-action@1.0.0
