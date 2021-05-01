@@ -47,4 +47,10 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           push: true
-          tags: mnakhtar247/hugo-site:v0
+          tags: mnakhtar247/hugo-site:v1
+          
+      - name: Deploy website on K8s cluster
+        uses: giorio94/kubectl-oidc-action@1.1.0
+        with:
+          kubeconfig: ${{ secrets.KUBECONFIG }}
+          args: apply -f template-deploy.yaml --namespace=sandbox-s291490
