@@ -1,5 +1,4 @@
 # Template for complete deployment
----
 # Deployment
 apiVersion: apps/v1
 kind: Deployment
