@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: hugo-site
-        image: mnakhtar247/hugo-site:v1
+        image: mnakhtar247/hugo-site:${IMG_TAG}
         resources:
           requests:
             memory: "64Mi"
