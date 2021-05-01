@@ -22,8 +22,8 @@ jobs:
       # Hugo themes are git submodules: "submodules: true" needed
       - name: Check out code
         uses: actions/checkout@v2
-        with:
-          submodules: true
+       # with:
+       #   submodules: true
 
       #- name: Build and push Docker image
       #  uses: mr-smithers-excellent/docker-build-push@v5
