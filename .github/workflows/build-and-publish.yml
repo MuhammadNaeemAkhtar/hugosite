@@ -1,3 +1,7 @@
+# Workflow to create a Docker image of a Hugo site
+# and deploy it on a K8s cluster
+# Version using github.sha as tag for Docker image
+# and Docker official actions for build/push steps
 name: Build and publish hugosite
 
 # Controls when the action will run. 
