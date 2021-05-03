@@ -1,0 +1,27 @@
+# Deployment manifest
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hugo-site
+spec:
+  selector:
+    matchLabels:
+      app: hugo-site
+  replicas: 1 # tells deployment to run 1 pods matching the template
+  template:
+    metadata:
+      labels:
+        app: hugo-site
+    spec:
+      containers:
+      - name: hugo-site
+        image: mnakhtar247/hugo-site:v0
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "250m"
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 80

@@ -1,0 +1,15 @@
+# Service manifest
+apiVersion: v1
+kind: Service
+metadata:
+  name: hugo-site
+  labels:
+    app: hugo-site
+spec:
+  selector:
+    app: hugo-site
+  ports:
+    - protocol: "TCP"
+      port: 80
+      targetPort: 80
+  type: ClusterIP
