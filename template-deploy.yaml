@@ -1,5 +1,4 @@
 # Template for complete deployment
----
 # Deployment
 apiVersion: apps/v1
 kind: Deployment
@@ -55,14 +54,14 @@ spec:
     - s291490-hugosite.crownlabs.polito.it
     secretName: hugo-site-cert
   rules:
-    - host: s291490-hugosite.crownlabs.polito.it
-      http:
-        paths:
-          - pathType: Prefix
-            path: "/"
-            backend:
-              service:
-                name: hugo-site
-                port:
-                  number: 80
+  - host: s291490-hugosite.crownlabs.polito.it
+    http:
+      paths:
+        - pathType: Prefix
+          path: "/"
+          backend:
+            service:
+              name: hugo-site
+              port:
+                number: 80
 
